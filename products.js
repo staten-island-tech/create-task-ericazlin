@@ -127,6 +127,10 @@ const products = [
         name: "bleach powder",
         price: 9, 
     },
+    {
+        name: "flowers",
+        price: 15, 
+    },
     
 ]
 
