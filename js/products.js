@@ -133,5 +133,4 @@ const products = [
     },
     
 ]
-
-export {products}
+export {products};
