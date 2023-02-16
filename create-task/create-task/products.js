@@ -131,6 +131,18 @@ const products = [
         name: "flowers",
         price: 15, 
     },
+    {
+        name: "socks",
+        price: 7, 
+    },
+    {
+        name: "rubber bands",
+        price: 6, 
+    },
+    {
+        name: "gloves",
+        price: 9, 
+    },
     
 ]
 export {products};
