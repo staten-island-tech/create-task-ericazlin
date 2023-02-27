@@ -85,7 +85,7 @@ const products = [
     },
     {
         name: "ketchup",
-        price: 2, 
+        price: 2,
     },
     {
         name: "hotdogs",
@@ -97,15 +97,15 @@ const products = [
     },
     {
         name: "instant noodles",
-        price: 2, 
+        price: 2,
     },
     {
         name: "apple juice",
-        price: 3, 
+        price: 3,
     },
     {
         name: "orange juice",
-        price: 3, 
+        price: 3,
     },
     {
         name: "milk",
@@ -125,24 +125,24 @@ const products = [
     },
     {
         name: "bleach powder",
-        price: 9, 
+        price: 9,
     },
     {
         name: "flowers",
-        price: 15, 
+        price: 15,
     },
     {
         name: "socks",
-        price: 7, 
+        price: 7,
     },
     {
         name: "rubber bands",
-        price: 6, 
+        price: 6,
     },
     {
         name: "gloves",
-        price: 9, 
+        price: 9,
     },
-    
+
 ]
-export {products};
+export { products };

@@ -1,7 +1,12 @@
+body {
+    background-color: rgb(93, 90, 85);
+}
+
 h1 {
     text-align: center;
     font-size: 4rem;
     font-family: 'Chakra Petch', sans-serif;
+   
 }
 
 .boom {
