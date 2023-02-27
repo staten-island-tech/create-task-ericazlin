@@ -4,11 +4,13 @@ h1 {
     font-family: 'Chakra Petch', sans-serif;
 }
 
-.change {
+.boom {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.boom {
+.change {
     display: flex;
 }
 

@@ -10,10 +10,12 @@ const DOMSelectors = {
     customer:document.querySelector("#customer")
 }
 
-// function displayitems(item){
-//     DOMSelectors.items.insertAdjacentHTML("beforeend","
-//    <h1>${item.name}</h1> ");
-// }
+function displayitems(item){
+    DOMSelectors.items.insertAdjacentHTML("beforeend",
+    `<h1>${totalitems} ${item.name} -</h1> 
+     <h1>$${priceCalc(randomitem,totalitems)}</h1>
+    `);
+}
 
 
 const totalitems = Math.floor(Math.random()*5+1)
@@ -30,3 +32,5 @@ function priceCalc(item,total){
 
 }
 console.log(priceCalc(randomitem,totalitems))
+
+displayitems(randomitem)
