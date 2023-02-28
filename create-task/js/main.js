@@ -12,8 +12,7 @@ const DOMSelectors = {
 
 function displayitems(item) {
     DOMSelectors.items.insertAdjacentHTML("beforeend",
-        `<h1>${totalitems} ${item.name} -</h1> 
-     <h1>$${priceCalc(randomitem, totalitems)}</h1>
+    `<h2>${totalitems} ${item.name} - $${priceCalc(randomitem, totalitems)}</h2>
     `);
 }
 
