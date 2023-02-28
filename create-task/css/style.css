@@ -1,11 +1,12 @@
 body {
-  background-color: rgb(93, 90, 85);
+  background-color: rgb(61, 60, 68);
 }
 
 h1 {
   text-align: center;
   font-size: 4rem;
   font-family: "Chakra Petch", sans-serif;
+  color: rgb(240, 240, 255)
 }
 
 .boom {
@@ -20,10 +21,10 @@ h1 {
 }
 
 #totaldisplay {
-  background-color: aqua;
+  background-color: rgb(116, 117, 134);
   text-align: center;
   border-radius: 5%;
-  border: blue 3px solid;
+  border: rgb(240, 240, 255) 3px solid;
   height: 50vh;
   width: 25vw;
   display: flex;
@@ -38,29 +39,35 @@ h1 {
 #customer {
   width: 25vw;
   text-align: center;
-  background-color: brown;
+  background-color: rgb(116, 117, 134);
   /* padding-bottom: 6vh; */
   height: 50vh;
   border-radius: 5%;
-  border: 3px blue solid;
+  border: 3px solid rgb(240, 240, 255);
 }
 
 #mobs {
-  background-color: blueviolet;
+  background-color: rgb(116, 117, 134);
   width: 25vw;
   height: 50vh;
   border-radius: 5%;
-  border: blue 3px solid;
+  border: rgb(240, 240, 255) 3px solid;
 }
 
 #change input {
-    color: crimson;
-    background-color: lawngreen;
-    text-align: center;
+  color: crimson;
+  background-color: rgb(22, 194, 229);
+  text-align: center;
+  margin-top: 10vh;
+}
+
+#bttn {
+  color: brown;
+
 }
 
 #totalprice {
-    justify-content: flex-end;
-    align-items: flex-end;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  justify-content: flex-end;
+  align-items: flex-end;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
