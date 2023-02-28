@@ -1,28 +1,66 @@
 body {
-    background-color: rgb(93, 90, 85);
+  background-color: rgb(93, 90, 85);
 }
 
 h1 {
-    text-align: center;
-    font-size: 4rem;
-    font-family: 'Chakra Petch', sans-serif;
-   
+  text-align: center;
+  font-size: 4rem;
+  font-family: "Chakra Petch", sans-serif;
 }
 
 .boom {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.change {
-    display: flex;
+#change {
+  display: flex;
+  flex-direction: column;
 }
 
-#mobs, 
-#items,
+#totaldisplay {
+  background-color: aqua;
+  text-align: center;
+  border-radius: 5%;
+  border: blue 3px solid;
+  height: 50vh;
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+}
+
 #customer img {
-    width: 30vw;
+  width: 15vw;
+  align-items: center;
 }
 
+#customer {
+  width: 25vw;
+  text-align: center;
+  background-color: brown;
+  /* padding-bottom: 6vh; */
+  height: 50vh;
+  border-radius: 5%;
+  border: 3px blue solid;
+}
 
+#mobs {
+  background-color: blueviolet;
+  width: 25vw;
+  height: 50vh;
+  border-radius: 5%;
+  border: blue 3px solid;
+}
+
+#change input {
+    color: crimson;
+    background-color: lawngreen;
+    text-align: center;
+}
+
+#totalprice {
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
