@@ -128,7 +128,7 @@ const products = [
         price: 9,
     },
     {
-        name: "flowers",
+        name: "bouquet of flowers",
         price: 15,
     },
     {

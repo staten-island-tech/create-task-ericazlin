@@ -11,6 +11,7 @@ const DOMSelectors = {
   totalprice: document.querySelector("#totalprice"),
 };
 
+//scanned item
 function displayitems(item) {
   DOMSelectors.items.insertAdjacentHTML(
     "beforeend",

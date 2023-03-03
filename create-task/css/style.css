@@ -9,6 +9,26 @@ h1 {
   color: rgb(240, 240, 255)
 }
 
+h2 {
+  text-align: center;
+  font-family:monospace;
+  font-size: 30px;
+  margin-bottom: 15vh;
+}
+
+h3 {
+  text-align: center;
+  font-size: 40px;
+  font-family: "Chakra Petch", sans-serif;
+}
+
+h4 {
+  text-align: center;
+  margin-top: 70px;
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 30px;
+}
+
 .boom {
   display: flex;
   justify-content: space-around;
@@ -40,7 +60,6 @@ h1 {
   width: 25vw;
   text-align: center;
   background-color: rgb(116, 117, 134);
-  /* padding-bottom: 6vh; */
   height: 50vh;
   border-radius: 5%;
   border: 3px solid rgb(240, 240, 255);
@@ -55,19 +74,41 @@ h1 {
 }
 
 #change input {
-  color: crimson;
-  background-color: rgb(22, 194, 229);
+  color: rgb(255, 255, 255);
+  background-color: rgb(61, 60, 68);
+  font-size: 30px;
   text-align: center;
-  margin-top: 10vh;
-}
+  margin-top: 0.1vh;
+  width: 15vw;
+  align-self: center;
+  margin-bottom: 1vw;
+  height: 5vh;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 5%;
+} 
 
 #bttn {
-  color: brown;
+  color: rgb(0, 0, 0);
+  width: 8vw;
+  height: 4vh;
+  font-size: 18px;
+  align-self: center;
+  background-color: rgb(255, 255, 255);
+  border: rgb(61, 60, 68) solid 3px;
+  border-radius: 5%;
+}
 
+#bttn:hover {
+  transform: scale(105%);
+  border: solid white 3px;
+  background-color: rgb(61, 60, 68);
+  color: white;
+  border-radius: 5%;
 }
 
 #totalprice {
   justify-content: flex-end;
   align-items: flex-end;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 35px;
 }
