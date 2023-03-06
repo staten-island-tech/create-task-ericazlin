@@ -74,7 +74,7 @@ function checkChange() {
 
     DOMSelectors.reaction.insertAdjacentHTML("beforeend",
     `
-    <h1>you did it!!!!</h1>
+    <h1>Correct change, the customer is satisfied!</h1>
     `
     )
     DOMSelectors.image.insertAdjacentHTML("beforeend", 
@@ -89,7 +89,7 @@ function checkChange() {
 
     DOMSelectors.reaction.insertAdjacentHTML("beforeend",
     `
-    <h1>you did not do it.</h1>
+    <h1>Incorrect change, the customer is dissatisfied.</h1>
     `
     )
     DOMSelectors.image.insertAdjacentHTML("beforeend", 
@@ -97,7 +97,6 @@ function checkChange() {
     <img src="angrycustomer.png" alt="the customer is angry" />
     `
     )
-
 }
 }
 
@@ -108,7 +107,6 @@ DOMSelectors.btn.addEventListener("click", function () {
   displayitems(randomitem, totalitems, given);
   DOMSelectors.input.value = ''
 })
-
 
 const {randomitem, totalitems, given} = randomize();
 displayitems(randomitem, totalitems, given);
