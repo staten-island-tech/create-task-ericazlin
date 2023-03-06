@@ -9,40 +9,62 @@ const DOMSelectors = {
   items: document.querySelector("#items"),
   customer: document.querySelector("#customer"),
   totalprice: document.querySelector("#totalprice"),
+  btn: document.querySelector("#bttn"),
+  given: document.querySelector("#given"),
+  numAndItem: document.querySelector("#numAndItem"),
+  cost: document.querySelector("#cost"),
 };
 
 //scanned item
-function displayitems(item) {
-  DOMSelectors.items.insertAdjacentHTML(
+function displayitems(item, totalitems, given) {
+  DOMSelectors.numAndItem.insertAdjacentHTML(
     "beforeend",
     `<h2>${totalitems} ${item.name}</h2>
     `
   );
-  DOMSelectors.totalprice.insertAdjacentHTML(
+  DOMSelectors.cost.insertAdjacentHTML(
     "beforeend",
-    `<h2>$${priceCalc(randomitem,totalitems)}</h2>
+    `<h2>$${priceCalc(item,totalitems)}</h2>
     `
   );
+  DOMSelectors.given.insertAdjacentHTML(
+    "beforeend", 
+    `<h2>$${given}</h2>
+    `
+  )
 }
 
-const totalitems = Math.floor(Math.random() * 5 + 1);
-console.log(totalitems);
-
-const randomitem = products[Math.floor(Math.random() * products.length)];
-console.log(randomitem);
+function clear() {
+  DOMSelectors.numAndItem.innerHTML = ''
+  DOMSelectors.cost.innerHTML = ''
+  DOMSelectors.given.innerHTML = ''
+}
 
 function priceCalc(item, total) {
   const price = item.price * total;
   return price;
 }
-console.log(priceCalc(randomitem, totalitems));
-displayitems(randomitem);
 
-//random payment amount
-const payment = priceCalc(randomitem, totalitems)
+function randomize() {
+  const totalitems = Math.floor(Math.random() * 5 + 1);
 
-const change = Math.floor(Math.random()*27) ;
-console.log(change)
+  const randomitem = products[Math.floor(Math.random() * products.length)];
 
-const given = change+payment
-console.log(given)
+  //random payment amount
+  const payment = priceCalc(randomitem, totalitems)
+
+  const change = Math.floor(Math.random()*27) ;
+
+  const given = change+payment
+  console.log(given)
+
+  displayitems(randomitem, totalitems, given);
+}
+
+
+DOMSelectors.btn.addEventListener("click", function () {
+  clear();
+  randomize();
+})
+
+randomize()
