@@ -13,8 +13,10 @@ const DOMSelectors = {
   given: document.querySelector("#given"),
   numAndItem: document.querySelector("#numAndItem"),
   cost: document.querySelector("#cost"),
+  input: document.querySelector("#input"),
+  reaction: document.querySelector("#reaction"),
+  image: document.querySelector("#image"),
 };
-
 //scanned item
 function displayitems(item, totalitems, given) {
   DOMSelectors.numAndItem.insertAdjacentHTML(
@@ -24,15 +26,17 @@ function displayitems(item, totalitems, given) {
   );
   DOMSelectors.cost.insertAdjacentHTML(
     "beforeend",
-    `<h2>$${priceCalc(item,totalitems)}</h2>
+    `<h2 id="costAmount">$${priceCalc(item,totalitems)}</h2>
     `
   );
   DOMSelectors.given.insertAdjacentHTML(
     "beforeend", 
-    `<h2>$${given}</h2>
+    `<h2 id="givenAmount">$${given}</h2>
     `
   )
 }
+
+let currentChange = null;
 
 function clear() {
   DOMSelectors.numAndItem.innerHTML = ''
@@ -51,20 +55,60 @@ function randomize() {
   const randomitem = products[Math.floor(Math.random() * products.length)];
 
   //random payment amount
-  const payment = priceCalc(randomitem, totalitems)
+  const payment = priceCalc(randomitem, totalitems);
 
-  const change = Math.floor(Math.random()*27) ;
+  const change = Math.floor(Math.random() * 27);
+  console.log(change);
 
-  const given = change+payment
-  console.log(given)
+  const given = change + payment;
 
-  displayitems(randomitem, totalitems, given);
+  currentChange = change;
+
+  return { randomitem, totalitems, given};
 }
 
+function checkChange() {
+  if (DOMSelectors.input.value == currentChange) {
+    DOMSelectors.reaction.innerHTML=''
+    DOMSelectors.image.innerHTML = ''
+
+    DOMSelectors.reaction.insertAdjacentHTML("beforeend",
+    `
+    <h1>you did it!!!!</h1>
+    `
+    )
+    DOMSelectors.image.insertAdjacentHTML("beforeend", 
+    `
+    <img src="happycustomer.png" alt="the customer is happy" />
+    `
+    )
+  }
+  else {
+    DOMSelectors.reaction.innerHTML= ''
+    DOMSelectors.image.innerHTML = ''
+
+    DOMSelectors.reaction.insertAdjacentHTML("beforeend",
+    `
+    <h1>you did not do it.</h1>
+    `
+    )
+    DOMSelectors.image.insertAdjacentHTML("beforeend", 
+    `
+    <img src="angrycustomer.png" alt="the customer is angry" />
+    `
+    )
+
+}
+}
 
 DOMSelectors.btn.addEventListener("click", function () {
   clear();
-  randomize();
+  checkChange();
+  const {randomitem, totalitems, given} = randomize();
+  displayitems(randomitem, totalitems, given);
+  DOMSelectors.input.value = ''
 })
 
-randomize()
+
+const {randomitem, totalitems, given} = randomize();
+displayitems(randomitem, totalitems, given);
