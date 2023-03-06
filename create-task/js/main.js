@@ -73,7 +73,7 @@ function randomize() {
   return { randomitem, randomitem2, totalitems, payment, given };
 }
 
-function checkChange() {
+function checkChange(currentTotal) {
 
     let prices = []
     for (let index = 0; index < products.length; index++) {
@@ -135,7 +135,7 @@ function checkChange() {
 
 DOMSelectors.btn.addEventListener("click", function () {
   clear();
-  checkChange();
+  checkChange(currentTotal);
   const {randomitem, randomitem2, totalitems, payment, given} = randomize();
   displayitems(randomitem, randomitem2, totalitems, payment, given);
   DOMSelectors.input.value = ''
