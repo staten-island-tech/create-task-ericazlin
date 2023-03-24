@@ -8,7 +8,7 @@ const DOMSelectors = {
   change: document.querySelector("#change"),
   items: document.querySelector("#items"),
   customer: document.querySelector("#customer"),
-  totalprice: document.querySelector("#totalprice"),
+  totalprice: document.querySelector("#totalPrice"),
   btn: document.querySelector("#bttn"),
   given: document.querySelector("#given"),
   numAndItem: document.querySelector("#numAndItem"),
@@ -16,34 +16,35 @@ const DOMSelectors = {
   input: document.querySelector("#input"),
   reaction: document.querySelector("#reaction"),
   image: document.querySelector("#image"),
+  list: document.querySelector("#list"),
+  response: document.querySelector("#response"),
 };
 //scanned item
-function displayitems(item, item2, totalitems, payment, given) {
+function displayItems(item, totalItems, payment, given) {
   DOMSelectors.numAndItem.insertAdjacentHTML(
     "beforeend",
-    `<h2>${totalitems} ${item.name}</h2>
-    <h2>${totalitems} ${item2.name}</h2>
+    `<p class="displayed">${totalItems} ${item.name}</p>
     `
   );
   DOMSelectors.cost.insertAdjacentHTML(
     "beforeend",
-    `<h2 id="costAmount">$${payment}</h2>
+    `<p class="displayed" id="costAmount">$${payment}</p>
     `
   );
   DOMSelectors.given.insertAdjacentHTML(
-    "beforeend", 
-    `<h2 id="givenAmount">$${given}</h2>
+    "beforeend",
+    `<p class="displayed" id="givenAmount">$${given}</p>
     `
-  )
+  );
 }
 
 let currentChange = null;
 let currentTotal = null;
 
 function clear() {
-  DOMSelectors.numAndItem.innerHTML = ''
-  DOMSelectors.cost.innerHTML = ''
-  DOMSelectors.given.innerHTML = ''
+  DOMSelectors.numAndItem.innerHTML = "";
+  DOMSelectors.cost.innerHTML = "";
+  DOMSelectors.given.innerHTML = "";
 }
 
 function priceCalc(item, total) {
@@ -52,94 +53,167 @@ function priceCalc(item, total) {
 }
 
 function randomize() {
-  const totalitems = Math.floor(Math.random() * 5 + 1);
+  const totalItems = Math.floor(Math.random() * 10 + 1);
 
-  const index = Math.floor(Math.random() * products.length)
+  const index = Math.floor(Math.random() * products.length);
 
-  const randomitem = products[index];
-  const randomitem2 = products[products.length - index];
-
+  const randomItem = products[index];
 
   //random payment amount
-  const payment = (priceCalc(randomitem, totalitems) + priceCalc(randomitem2, totalitems));
+  const payment =
+    priceCalc(randomItem, totalItems);
 
   const change = Math.floor(Math.random() * 27);
 
   const given = change + payment;
 
   currentChange = change;
-  currentTotal = totalitems
+  currentTotal = totalItems;
 
-  return { randomitem, randomitem2, totalitems, payment, given };
+  return { randomItem, totalItems, payment, given };
 }
 
-function checkChange(currentTotal) {
+function checkChange(currentChange) {
+  let otherItems = []
 
-    let prices = []
-    for (let index = 0; index < products.length; index++) {
-      const item = products[index];
-      let potential = priceCalc(item, currentTotal)
-
-      prices.push(potential)
+  let overshoot = DOMSelectors.input.value - currentChange
+  for (let index = 0; index < products.length; index++) {
+    const item = products[index];
+    if (item.price == overshoot) {
+      otherItems.push(item)
     }
+  }
 
-    const otherItems = prices.filter(price => price == DOMSelectors.input.value).length
+
+  let otherItemNames = otherItems.map(item => item.name)
+  console.log(otherItems, otherItemNames)
 
   if (DOMSelectors.input.value == currentChange) {
-    DOMSelectors.reaction.innerHTML=''
-    DOMSelectors.image.innerHTML = ''
+    DOMSelectors.response.innerHTML = "";
+    DOMSelectors.list.innerHTML = "";
+    DOMSelectors.image.innerHTML = "";
 
-    DOMSelectors.reaction.insertAdjacentHTML("beforeend",
+    DOMSelectors.response.insertAdjacentHTML(
+      "beforeend",
+      `
+    <p class="response">Correct change, the customer is satisfied!</p>
     `
-    <h1>Correct change, the customer is satisfied!</h1>
-    `
-    )
-    DOMSelectors.image.insertAdjacentHTML("beforeend", 
-    `
+    );
+    DOMSelectors.image.insertAdjacentHTML(
+      "beforeend",
+      `
     <img src="happycustomer.png" alt="the customer is happy" />
     `
-    )
-  }
-  else if(otherItems == 0){
-    DOMSelectors.reaction.innerHTML= ''
-    DOMSelectors.image.innerHTML = ''
+    );
+  } 
+   else if (overshoot > 0 && otherItems.length > 0){
+    DOMSelectors.response.innerHTML = "";
+    DOMSelectors.list.innerHTML = "";
+    DOMSelectors.image.innerHTML = "";
 
-    DOMSelectors.reaction.insertAdjacentHTML("beforeend",
+    DOMSelectors.response.insertAdjacentHTML(
+      "beforeend",
+      `
+    <p class="response">Incorrect change, the customer is angry.</p>
+    <p class="response" id="dependancies">You were up by $${Math.abs(overshoot)}.</p>
+    <p class="response" id="dependancies">Now the customer can buy an extra of these items with the extra money:</p>
     `
-    <h1>Incorrect change, the customer is dissatisfied.</h1>
-    `
-    )
-    DOMSelectors.image.insertAdjacentHTML("beforeend", 
-    `
+    );
+    otherItemNames.forEach(name => {
+      DOMSelectors.list.insertAdjacentHTML(
+        "beforeend",
+        `
+      <li>${name}</li>
+      `
+      );
+    })
+    DOMSelectors.image.insertAdjacentHTML(
+      "beforeend",
+      `
     <img src="angrycustomer.png" alt="the customer is angry" />
     `
-    )
+    );
   }
-  else{
-    DOMSelectors.reaction.innerHTML= ''
-    DOMSelectors.image.innerHTML = ''
+  else if (otherItems.length == 0){
+    DOMSelectors.response.innerHTML = "";
+    DOMSelectors.list.innerHTML = "";
+    DOMSelectors.image.innerHTML = "";
 
-    DOMSelectors.reaction.insertAdjacentHTML("beforeend",
+    DOMSelectors.response.insertAdjacentHTML(
+      "beforeend",
+      `
+    <p class="response">Incorrect change, the customer is angry.</p>
+    <p class="response" id="dependancies">You were off by $${Math.abs(overshoot)}.</p>
     `
-    <h1>Incorrect change, the customer is dissatisfied.</h1>
-    <h1>However, you would've been right if it was one of ${otherItems} other items!</h1>
-    `
-    )
-    DOMSelectors.image.insertAdjacentHTML("beforeend", 
-    `
+    );
+    otherItemNames.forEach(name => {
+      DOMSelectors.list.insertAdjacentHTML(
+        "beforeend",
+        `
+      <li>${name}</li>
+      `
+      );
+    })
+    DOMSelectors.image.insertAdjacentHTML(
+      "beforeend",
+      `
     <img src="angrycustomer.png" alt="the customer is angry" />
     `
-    )
+    );
+  }
+  else if (overshoot < 0){
+    DOMSelectors.response.innerHTML = "";
+    DOMSelectors.list.innerHTML = "";
+    DOMSelectors.image.innerHTML = "";
+
+    DOMSelectors.response.insertAdjacentHTML(
+      "beforeend",
+      `
+    <p class="response" id="dependancies">Incorrect change, the customer is dissatisfied.</p>
+    <p class="response" id="dependancies">You were down by $${Math.abs(overshoot)}.</p>
+    `
+    );
+    DOMSelectors.image.insertAdjacentHTML(
+      "beforeend",
+      `
+    <img src="angrycustomer.png" alt="the customer is angry" />
+    `
+    );
   }
 }
+
+//credit to https://stackoverflow.com/questions/14542062/eventlistener-enter-key
+DOMSelectors.input.addEventListener("keypress", function (e) {
+  if (e.key == "Enter") {
+    //end of credit
+    clear();
+    checkChange(currentChange);
+    const { randomItem, totalItems, payment, given } =
+      randomize();
+    displayItems(
+      randomItem,
+      totalItems,
+      payment,
+      given
+    );
+    DOMSelectors.input.value = "";
+  }
+});
 
 DOMSelectors.btn.addEventListener("click", function () {
   clear();
-  checkChange(currentTotal);
-  const {randomitem, randomitem2, totalitems, payment, given} = randomize();
-  displayitems(randomitem, randomitem2, totalitems, payment, given);
-  DOMSelectors.input.value = ''
-})
+  checkChange(currentChange);
+  const { randomItem, totalItems, payment, given } =
+    randomize();
+  displayItems(
+    randomItem,
+    totalItems,
+    payment,
+    given
+  );
+  DOMSelectors.input.value = "";
+});
 
-const {randomitem, randomitem2, totalitems, payment, given} = randomize();
-displayitems(randomitem, randomitem2, totalitems, payment, given);
+const { randomItem, totalItems, payment, given } =
+  randomize();
+displayItems(randomItem, totalItems, payment, given);

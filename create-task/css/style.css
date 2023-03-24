@@ -1,31 +1,57 @@
+* {
+  font-family: "Chakra Petch", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: rgb(61, 60, 68);
 }
 
-h1 {
+li {
+  color: rgb(240, 240, 255);
+  
+  font-size: 2rem;
+}
+
+#list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 0 5rem;
+}
+
+h1,
+.response {
   text-align: center;
   font-size: 3rem;
-  font-family: "Chakra Petch", sans-serif;
-  color: rgb(240, 240, 255)
+  color: rgb(240, 240, 255);
 }
 
-h2 {
+#dependancies {
+  font-size: 2.5rem;
+}
+
+.title {
+  margin-top: 2rem;
+}
+
+.displayed {
   text-align: center;
-  font-family:monospace;
+  font-family: monospace;
   font-size: 30px;
-  margin-bottom: 10vh;
+  margin: 4vh 0;
 }
 
-h3 {
+.subtitle {
   text-align: center;
   font-size: 40px;
-  font-family: "Chakra Petch", sans-serif;
 }
 
-h4 {
+.subtext {
   text-align: center;
-  margin-top: 70px;
-  font-family: "Chakra Petch", sans-serif;
+  margin-top: 40px;
+  margin-bottom: 0;
   font-size: 30px;
 }
 
@@ -33,6 +59,7 @@ h4 {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin: 5rem 3rem;
 }
 
 #change {
@@ -40,15 +67,16 @@ h4 {
   flex-direction: column;
 }
 
-#totaldisplay {
+#totalDisplay {
   background-color: rgb(116, 117, 134);
   text-align: center;
   border-radius: 5%;
   border: rgb(240, 240, 255) 3px solid;
-  height: 64vh;
-  width: 25vw;
+  height: 52vh;
+  width: 20vw;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 #customer img {
@@ -60,17 +88,25 @@ h4 {
   width: 25vw;
   text-align: center;
   background-color: rgb(116, 117, 134);
-  height: 64vh;
+  height: 52vh;
   border-radius: 5%;
   border: 3px solid rgb(240, 240, 255);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #mobs {
   background-color: rgb(116, 117, 134);
   width: 25vw;
-  height: 64vh;
+  height: 52vh;
   border-radius: 5%;
   border: rgb(240, 240, 255) 3px solid;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #change input {
@@ -85,7 +121,7 @@ h4 {
   height: 5vh;
   border: 3px solid rgb(255, 255, 255);
   border-radius: 5%;
-} 
+}
 
 #bttn {
   color: rgb(0, 0, 0);
@@ -106,9 +142,6 @@ h4 {
   border-radius: 5%;
 }
 
-#totalprice {
-  justify-content: flex-end;
-  align-items: flex-end;
-  font-family: "Chakra Petch", sans-serif;
+#totalPrice {
   font-size: 35px;
 }

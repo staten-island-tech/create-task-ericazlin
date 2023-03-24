@@ -14,43 +14,42 @@
     <title>cashier simulator</title>
   </head>
   <body>
-    <h1>$ cashier simulator $</h1>
+    <h1 class="title">$ cashier simulator $</h1>
 
     <div class="boom">
       <div id="mobs">
         <div id="money"></div>
 
         <div id="change">
-         <h3>CASH REGISTER</h3>
-          <input type="text" id="input"/>
+          <p class="subtitle">CASH REGISTER</p>
+          <input type="text" id="input" />
           <button id="bttn">GIVE CHANGE</button>
-          <h4>CUSTOMER GIVES</h4>
+          <p class="subtext">CUSTOMER GIVES</p>
           <div id="given"></div>
         </div>
       </div>
 
-
-     <div id="totaldisplay">
-      <div id="items">
-        <h3>ITEMS SCANNED</h3>
-        <div id="numAndItem"></div>
+      <div id="totalDisplay">
+        <div id="items">
+          <p class="subtitle">ITEMS SCANNED</p>
+          <div id="numAndItem"></div>
+        </div>
+        <div id="totalPrice">TOTAL PRICE</div>
+        <div id="cost"></div>
       </div>
-      <div id="totalprice">TOTAL PRICE</div>
-      <div id="cost"></div>
-     </div>
-
-
 
       <div id="customer">
-        <h3>CUSTOMER STATUS</h3>
+        <p class="subtitle">CUSTOMER STATUS</p>
         <div id="image">
           <img src="happycustomer.png" alt="the customer is happy" />
         </div>
-        
       </div>
     </div>
 
-    <div id="reaction"></div>
+    <div id="reaction">
+      <div id="response"></div>
+     <div id="list"></div>
+    </div>
 
     <script type="module" src="./js/main.js"></script>
   </body>
